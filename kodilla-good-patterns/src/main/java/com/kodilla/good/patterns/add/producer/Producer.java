@@ -20,7 +20,7 @@ public class Producer {
     }
 
     public List<Product> getProduct() {
-        list = producerAPI.getInformationAboutProduct();
+        list = producerAPI.getProduct();
         return new ArrayList<>(list);
     }
 

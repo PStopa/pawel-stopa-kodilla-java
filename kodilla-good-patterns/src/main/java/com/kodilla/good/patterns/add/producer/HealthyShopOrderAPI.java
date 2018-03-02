@@ -5,7 +5,7 @@ import java.util.List;
 public class HealthyShopOrderAPI implements OrderService {
     public boolean process(OrderRequest orderRequest) {
         HealthyShopDataAPI api = new HealthyShopDataAPI();
-        List<Product> list = api.getInformationAboutProduct();
+        List<Product> list = api.getProduct();
 
         System.out.println(api.getInformationAboutProducer());
         if(list.contains(orderRequest.getProduct())){

@@ -1,18 +1,24 @@
 package com.kodilla.good.patterns.add.producer;
 
+import java.util.HashMap;
 import java.util.List;
 
 
-public class ExtraFoodShopOrderAPI implements OrderService{
+public class ExtraFoodShopOrderAPI implements OrderService {
     public boolean process(OrderRequest orderRequest) {
         ExtraFoodShopDataAPI api = new ExtraFoodShopDataAPI();
-        List<Product> list = api.getInformationAboutProduct();
 
-        for (Product productTmp : list) {
-            if ((productTmp.getName() == orderRequest.getProduct().getName()) &&
-                    (productTmp.getQuantity() >= orderRequest.getProduct().getQuantity())) {
+        HashMap<Name, Product> productMap = new HashMap<>();
+        for (Product product : api.getProduct()) {
+            productMap.put(new Name(product.getName()), product);
+        }
 
-                System.out.println(api.getInformationAboutProducer());
+        Name nameTmp = new Name(orderRequest.getProduct().getName());
+        System.out.println(api.getInformationAboutProducer());
+        boolean containsOrder = productMap.containsKey(nameTmp);
+        if (containsOrder) {
+            Product productTmp = productMap.get(nameTmp);
+            if (productTmp.getQuantity() >= orderRequest.getProduct().getQuantity()) {
                 System.out.println("Order - succesful!");
                 return true;
             }

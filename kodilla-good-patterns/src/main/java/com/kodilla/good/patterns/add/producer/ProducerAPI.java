@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface ProducerAPI {
     String getInformationAboutProducer();
-    List<Product> getInformationAboutProduct();
+    List<Product> getProduct();
 }

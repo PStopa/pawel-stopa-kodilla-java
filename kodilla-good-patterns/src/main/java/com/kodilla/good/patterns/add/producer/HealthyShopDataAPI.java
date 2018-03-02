@@ -7,7 +7,7 @@ public class HealthyShopDataAPI implements ProducerAPI{
     public String getInformationAboutProducer(){
         return "HealthyShop";
     }
-    public List<Product> getInformationAboutProduct(){
+    public List<Product> getProduct(){
         List<Product> list = new ArrayList<>();
         Product product1 = new Product("pasta", 10);
         Product product2 = new Product("milk", 20);
