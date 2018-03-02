@@ -1,8 +1,8 @@
 package com.kodilla.good.patterns.add.producer;
 
-import java.util.List;
+import java.util.HashMap;
 
 public interface ProducerAPI {
     String getInformationAboutProducer();
-    List<Product> getProduct();
+    HashMap<String, Product> getProduct();
 }

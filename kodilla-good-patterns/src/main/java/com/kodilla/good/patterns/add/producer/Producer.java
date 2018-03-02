@@ -1,11 +1,10 @@
 package com.kodilla.good.patterns.add.producer;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class Producer {
     private String name;
-    private List<Product> list;
+    private HashMap<String, Product> productMap;
     private OrderService orderService;
     private ProducerAPI producerAPI;
 
@@ -19,14 +18,13 @@ public class Producer {
         return name;
     }
 
-    public List<Product> getProduct() {
-        list = producerAPI.getProduct();
-        return new ArrayList<>(list);
+    public HashMap<String, Product> getProduct() {
+        productMap = producerAPI.getProduct();
+        return new HashMap<>(productMap);
     }
 
     public boolean process(OrderRequest orderRequest){
-        boolean result = orderService.process(orderRequest);
-        return result;
+        return orderService.process(orderRequest);
     }
 
 }
