@@ -9,7 +9,7 @@ public class OrderProcessor {
         GlutenFreeShopDataAPI glutenFreeShopDataAPI = new GlutenFreeShopDataAPI();
         GlutenFreeShopOrderAPI glutenFreeShopOrderAPI = new GlutenFreeShopOrderAPI();
 
-        Product product = new Product("bread", 301);
+        Product product = new Product("bread", 300);
         OrderRequest orderRequest = new OrderRequest(product);
 
         Producer extraFoodShop = new Producer(extraFoodShopDataAPI, extraFoodShopOrderAPI);
