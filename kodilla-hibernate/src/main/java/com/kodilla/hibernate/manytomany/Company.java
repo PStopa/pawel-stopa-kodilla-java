@@ -5,18 +5,24 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedNativeQuery(
+        name = "Company.retrieveCompaniesBeginWith",
+        query = "SELECT * FROM COMPANIES WHERE LEFT(COMPANY_NAME, 3) LIKE :COMPANYNAME",
+        resultClass = Company.class
+)
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
     private int id;
-    private String name;
+    private String compName;
     private List<Employee> employees = new ArrayList<>();
 
     public Company() {
     }
 
     public Company(String name) {
-        this.name = name;
+        this.compName = name;
     }
 
     @Id
@@ -30,7 +36,7 @@ public class Company {
     @NotNull
     @Column(name = "COMPANY_NAME")
     public String getName() {
-        return name;
+        return compName;
     }
 
     private void setId(int id) {
@@ -38,7 +44,7 @@ public class Company {
     }
 
     private void setName(String name) {
-        this.name = name;
+        this.compName = name;
     }
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
