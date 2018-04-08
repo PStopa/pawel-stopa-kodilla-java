@@ -1,5 +1,7 @@
 package com.kodilla.sudoku;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -53,5 +55,26 @@ public class SudokuBoard {
                 .map(SudokuRow::toString)
                 .collect(Collectors.joining("\n- - - - - - - - - - - - - - - - - - -\n",
                         "- - - - - - - - - - - - - - - - - - -\n","\n- - - - - - - - - - - - - - - - - - -"));
+    }
+
+    public SudokuBoard deepCopy(){
+        SudokuBoard clonedBoard = new SudokuBoard();
+        clonedBoard.rowsOfBoard = new ArrayList<>();
+
+       for(int i=0; i<9; i++){
+           clonedBoard.rowsOfBoard.add(i, new SudokuRow());
+
+           for(int j=0; j<9 ; j++){
+               SudokuElement elementCopy = null;
+               try{
+                   elementCopy = this.rowsOfBoard.get(i).getElementsOfRow().get(j).deepCopy();
+               } catch (CloneNotSupportedException e) {
+                   System.out.println("Problem with deep copy of Element");
+               }
+
+               clonedBoard.rowsOfBoard.get(i).getElementsOfRow().add(j, elementCopy);
+           }
+       }
+       return clonedBoard;
     }
 }

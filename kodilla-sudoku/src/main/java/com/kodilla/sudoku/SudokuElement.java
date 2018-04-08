@@ -32,7 +32,7 @@ public class SudokuElement extends Prototype {
     public void setValueIfAvailable() {
         if((allowedValues.size() == 1) && (getValue() == -1)) {
             setValue(allowedValues.get(0));
-            //allowedValues.clear();
+            allowedValues.clear();
         }
     }
 

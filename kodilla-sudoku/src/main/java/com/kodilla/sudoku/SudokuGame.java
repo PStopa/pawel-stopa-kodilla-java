@@ -2,12 +2,33 @@ package com.kodilla.sudoku;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class SudokuGame {
     SudokuBoard sudokuBoard;
+    Scanner scanner = new Scanner(System.in);
 
     public boolean resolveSudoku() {
-        return true;
+        System.out.println("Do you want to play again? (Y/N)");
+        String answer = scanner.nextLine();
+        answer = answer.toUpperCase();
+        if(answer.equals("Y")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public String setValueByUser() {
+        String  lines = scanner.nextLine();
+        lines = lines.toUpperCase();
+        if(lines.equals("SUDOKU")){
+            return "SUDOKU";
+        } else {
+            String[] strs = lines.split(",");
+            setValue(Integer.parseInt(strs[0]),Integer.parseInt(strs[1]),Integer.parseInt(strs[2]));
+            return "AGAIN";
+        }
     }
 
     public void setValue(int index, int row, int value) {
@@ -30,6 +51,7 @@ public class SudokuGame {
     }
 
     public void solve(SudokuElement element, ArrayList<SudokuElement> list) throws SudokuException{
+
         if (element.getValue() != -1) {
             element.getAllowedValues().clear();
         } else {
@@ -40,18 +62,18 @@ public class SudokuGame {
             boolean continueIterator = true;
 
             while (iterator.hasNext() && continueIterator && element.getValue() == -1) {
-                int value = (int)iterator.next();
+                int tmpValue = (int)iterator.next();
                 existInField = false;
                 existInAllowed = false;
                 boolean remove = false;
 
                 for (SudokuElement sudokuElement: list) {
-                    if (value == sudokuElement.getValue()) {
+                    if (tmpValue == sudokuElement.getValue()) {
                         remove = true;
                         existInField = true;
                     } else {
                         for (Integer allowedvalue : sudokuElement.getAllowedValues()) {
-                            if (value == allowedvalue) existInAllowed = true;
+                            if (tmpValue == allowedvalue) existInAllowed = true;
                         }
                     }
                 }
@@ -61,20 +83,20 @@ public class SudokuGame {
                     element.setValueIfAvailable();
                     if (element.getValue() != -1) {
                         continueIterator = false;
-                        element.getAllowedValues().clear();
                     }
                 }
 
                 if (!existInAllowed && !existInField){
-                    element.setValue(value);
+                    element.setValue(tmpValue);
                     continueIterator = false;
                     element.getAllowedValues().clear();
                 }
 
-                if(existInField && (element.getAllowedValues().size() == 1)){
-                    throw new SudokuException("problem z wartością ",list, value);
+                if(existInField && (element.getAllowedValues().size() <= 1) && continueIterator){
+                    System.out.println(element.getAllowedValues());
+                    throw new SudokuException("problem with value ",list, tmpValue);
                 }
-                if(existInField && !existInAllowed) element.setValueIfAvailable();
+                element.setValueIfAvailable();
             }
         }
     }
