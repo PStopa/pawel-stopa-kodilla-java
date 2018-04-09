@@ -21,38 +21,6 @@ public class SudokuRunner {
                 theGame.printBoard();
             }
 
-            // FIRST GAME
-//            theGame.setValue(2, 1, 2);
-//            theGame.setValue(4, 1, 5);
-//            theGame.setValue(6, 1, 1);
-//            theGame.setValue(8, 1, 9);
-//            theGame.setValue(1, 2, 8);
-//            theGame.setValue(4, 2, 2);
-//            theGame.setValue(6, 2, 3);
-//            theGame.setValue(9, 2, 6);
-//            theGame.setValue(2, 3, 3);
-//            theGame.setValue(5, 3, 6);
-//            theGame.setValue(8, 3, 7);
-//            theGame.setValue(3, 4, 1);
-//            theGame.setValue(7, 4, 6);
-//            theGame.setValue(1, 5, 5);
-//            theGame.setValue(2, 5, 4);
-//            theGame.setValue(8, 5, 1);
-//            theGame.setValue(9, 5, 9);
-//            theGame.setValue(3, 6, 2);
-//            theGame.setValue(7, 6, 7);
-//            theGame.setValue(2, 7, 9);
-//            theGame.setValue(5, 7, 3);
-//            theGame.setValue(8, 7, 8);
-//            theGame.setValue(1, 8, 2);
-//            theGame.setValue(4, 8, 8);
-//            theGame.setValue(6, 8, 4);
-//            theGame.setValue(9, 8, 7);
-//            theGame.setValue(2, 9, 1);
-//            theGame.setValue(4, 9, 9);
-//            theGame.setValue(6, 9, 7);
-//            theGame.setValue(8, 9, 6);
-
             System.out.println("\n\n SUDOKU SOLVED\n");
 
             int fillElements = 0;
@@ -117,8 +85,15 @@ public class SudokuRunner {
                 }
             }
             theGame.printBoard();
-            System.out.println("Filled elements: " + fillElements);
-            System.out.println("Iteration: " + iteration);
+
+            if(iteration < 30){
+                System.out.println("\nDIFFICULT: IT`S EASY");
+            } else if(iteration < 50) {
+                System.out.println("\nDIFFICULT: IT`S MEDIUM");
+            } else if(iteration > 50) {
+                System.out.println("\nDIFFUCULT: IT`S HARD!");
+            }
+
             gameFinished = theGame.resolveSudoku();
         }
     }

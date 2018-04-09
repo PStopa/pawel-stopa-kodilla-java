@@ -71,7 +71,6 @@ public class SudokuBoard {
                } catch (CloneNotSupportedException e) {
                    System.out.println("Problem with deep copy of Element");
                }
-
                clonedBoard.rowsOfBoard.get(i).getElementsOfRow().add(j, elementCopy);
            }
        }

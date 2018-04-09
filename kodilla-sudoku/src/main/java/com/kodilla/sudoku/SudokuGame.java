@@ -9,9 +9,16 @@ public class SudokuGame {
     Scanner scanner = new Scanner(System.in);
 
     public boolean resolveSudoku() {
+        String answer = "";
         System.out.println("Do you want to play again? (Y/N)");
-        String answer = scanner.nextLine();
+        answer = scanner.nextLine();
         answer = answer.toUpperCase();
+
+        while(!(answer.equals("Y") || answer.equals("N"))){
+            System.out.println("Wrong choice!\nDo you want to play again? (Y/N)");
+            answer = scanner.nextLine();
+            answer = answer.toUpperCase();
+        }
         if(answer.equals("Y")) {
             return false;
         } else {
@@ -22,13 +29,23 @@ public class SudokuGame {
     public String setValueByUser() {
         String  lines = scanner.nextLine();
         lines = lines.toUpperCase();
-        if(lines.equals("SUDOKU")){
-            return "SUDOKU";
+        String stringReturn = "";
+
+        if(lines.matches("[1-9],[1-9],[1-9]") || lines.equals("SUDOKU")) {
+            if(lines.equals("SUDOKU")){
+                stringReturn = "SUDOKU";
+            } else {
+                String[] strs = lines.split(",");
+                setValue(Integer.parseInt(strs[0]),Integer.parseInt(strs[1]),Integer.parseInt(strs[2]));
+                stringReturn = "AGAIN";
+            }
         } else {
-            String[] strs = lines.split(",");
-            setValue(Integer.parseInt(strs[0]),Integer.parseInt(strs[1]),Integer.parseInt(strs[2]));
-            return "AGAIN";
+            System.out.println("Wrong input text!");
+            System.out.println("Enter position and value of element\n" +
+                    "eg. 2,1,2 - column 2, row 1, value 2. \nIf you want to solve sudoku type SUDOKU\n");
+            setValueByUser();
         }
+        return stringReturn;
     }
 
     public void setValue(int index, int row, int value) {
