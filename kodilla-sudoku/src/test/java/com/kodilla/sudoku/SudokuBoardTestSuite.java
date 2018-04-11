@@ -61,22 +61,25 @@ public class SudokuBoardTestSuite {
         SudokuElement element = new SudokuElement(-1);
         element.getAllowedValues().clear();
         element.getAllowedValues().add(1);
-        element.getAllowedValues().add(7);
-        element.getAllowedValues().add(6);
-       // element.getAllowedValues().add(2);
+        element.getAllowedValues().add(2);
+        element.getAllowedValues().add(3);
+
         SudokuElement elementL1 = new SudokuElement(1);
         elementL1.getAllowedValues().clear();
-        SudokuElement elementL2 = new SudokuElement(8);
+
+        SudokuElement elementL2 = new SudokuElement(-1);
         elementL2.getAllowedValues().clear();
-        //elementL2.getAllowedValues().add(3);
+        element.getAllowedValues().add(3);
 
         ArrayList<SudokuElement> list = new ArrayList<>();
         list.add(elementL1);
         list.add(elementL2);
+
+
         SudokuGame theGame = new SudokuGame();
         try{
             theGame.solve(element, list);
-            element.setValueIfAvailable();
+            //element.setValueIfAvailable();
             System.out.println(element.getAllowedValues() + "allowed");
             System.out.println(element.getValue() + " value");
 

@@ -69,12 +69,13 @@ public class SudokuRunner {
                                 theGame.printBoard();
                                 System.out.println(element.getAllowedValues());
                                 System.out.println("value: " + deleteValue + ",row " + rowIndex + " ,column" + columnIndex);
+                                System.out.println("value: " + deleteValue + ",row " + rowIndex + " ,column" + columnIndex);
                                 System.exit(0);
                                 break;
                             } else {
                                 theGame.sudokuBoard = copyBoard.deepCopy();
                                 theGame.sudokuBoard.getElement(deleteYColumn, deleteXRow).getAllowedValues().remove(deleteIndex);
-                                theGame.sudokuBoard.getElement(deleteYColumn, deleteXRow).setValueIfAvailable();
+                                //theGame.sudokuBoard.getElement(deleteYColumn, deleteXRow).setValueIfAvailable();
                                 copyBoard = null;
                                 change++;
                             }

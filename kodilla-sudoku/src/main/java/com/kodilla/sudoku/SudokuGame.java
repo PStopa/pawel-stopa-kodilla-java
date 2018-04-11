@@ -77,7 +77,6 @@ public class SudokuGame {
             boolean existInField ;
             boolean existInAllowed;
             boolean continueIterator = true;
-            //element.setValueIfAvailable();
 
             while (iterator.hasNext() && continueIterator && element.getValue() == -1) {
                 int tmpValue = (int)iterator.next();
@@ -111,19 +110,11 @@ public class SudokuGame {
                     continueIterator = false;
                     element.getAllowedValues().clear();
                 }
-//                if(existInField && (element.getAllowedValues().size() <= 1) && (tmpValue == element.getAllowedValues().get(0)) && !continueIterator){
-//                    System.out.println(element.getAllowedValues());
-//                    throw new SudokuException("problem with value ",list, tmpValue);
-//                }
 
-
-                if(existInField && (element.getAllowedValues().size() <= 1) && !continueIterator){
+                if(existInField && (element.getAllowedValues().size() <= 1) && continueIterator){
                     System.out.println(element.getAllowedValues());
                     throw new SudokuException("problem with value ",list, tmpValue);
                 }
-
-
-                //element.setValueIfAvailable();
             }
         }
     }
