@@ -12,6 +12,10 @@ public class SudokuBoard {
         rowsOfBoard.add(row);
     }
 
+    public ArrayList<SudokuRow> getRowsOfBoard() {
+        return rowsOfBoard;
+    }
+
     public SudokuElement getElement(int column, int row){
         return rowsOfBoard.get(row).getElementsOfRow().get(column);
     }

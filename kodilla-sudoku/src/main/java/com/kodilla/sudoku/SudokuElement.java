@@ -17,6 +17,24 @@ public class SudokuElement extends Prototype {
         }
     }
 
+    public SudokuElement(int value, int v1){
+        this.value = value;
+        allowedValues.add(v1);
+    }
+
+    public SudokuElement(int value, int v1, int v2){
+        this.value = value;
+        allowedValues.add(v1);
+        allowedValues.add(v2);
+    }
+
+    public SudokuElement(int value, int v1, int v2, int v3){
+        this.value = value;
+        allowedValues.add(v1);
+        allowedValues.add(v2);
+        allowedValues.add(v3);
+    }
+
     public List<Integer> getAllowedValues() {
         return allowedValues;
     }
