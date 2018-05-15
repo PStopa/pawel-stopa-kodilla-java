@@ -8,8 +8,11 @@ import java.util.List;
 @NamedNativeQuery(
         name = "Company.retrieveCompaniesBeginWith",
         query = "SELECT * FROM COMPANIES WHERE LEFT(COMPANY_NAME, 3) LIKE :COMPANYNAME",
-        resultClass = Company.class
-)
+        resultClass = Company.class)
+
+@NamedQuery(
+        name = "Company.retrieveCompanyWhereNameContainExtract",
+        query = "FROM Company WHERE COMPANY_NAME LIKE :EXTRACT")
 
 @Entity
 @Table(name = "COMPANIES")

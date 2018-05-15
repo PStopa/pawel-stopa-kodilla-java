@@ -69,7 +69,6 @@ public class SudokuRunner {
                                 theGame.printBoard();
                                 System.out.println(element.getAllowedValues());
                                 System.out.println("value: " + deleteValue + ",row " + rowIndex + " ,column" + columnIndex);
-                                System.out.println("value: " + deleteValue + ",row " + rowIndex + " ,column" + columnIndex);
                                 System.exit(0);
                                 break;
                             } else {
@@ -90,8 +89,8 @@ public class SudokuRunner {
                     boolean continueRandom = true;
                   /////
                     while(continueRandom) {
-                        int row = generator.nextInt(8);
-                        int column = generator.nextInt(8);
+                        int row = generator.nextInt(9);
+                        int column = generator.nextInt(9);
                         element = theGame.sudokuBoard.getElement(column,row);
                         if(element.getValue() == -1){
                             continueRandom = false;
