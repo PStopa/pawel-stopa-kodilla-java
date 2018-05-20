@@ -1,5 +1,6 @@
-package com.kodilla.patterns2.adapter.bookclasifier;
+package com.kodilla.patterns2.adapter.bookclassifier;
 
+import com.kodilla.patterns2.adapter.bookclasifier.MedianAdapter;
 import com.kodilla.patterns2.adapter.bookclasifier.librarya.Book;
 import org.junit.Test;
 
