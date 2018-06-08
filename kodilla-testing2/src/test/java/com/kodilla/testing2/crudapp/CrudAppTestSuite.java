@@ -16,8 +16,8 @@ import static org.junit.Assert.assertTrue;
 
 public class CrudAppTestSuite {
     private static final String BASE_URL = "https://pstopa.github.io/";
-    private static final String USER = "user";
-    private static final String PASSWORD = "password";
+    private static final String USER = "pstopa";
+    private static final String PASSWORD = "test1234";
     private WebDriver driver;
     private Random generator;
 
